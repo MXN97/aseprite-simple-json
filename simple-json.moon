@@ -109,6 +109,26 @@ export_json = (alignment) ->
         \close!
 
 
+dialog = () ->
+    with dlg = Dialog('Simple Json')
+        \combobox({
+            id: 'alignment',
+            label: 'Alignment:',
+            options: {vertical, horizontal}
+        })
+        \newrow!
+        \button({ 
+            id: 'submit', 
+            text: 'Create Json',
+            onclick: () -> \close!
+        })
+        \show!
+
+        .bounds = Rectangle(250, 500, .bounds.width, .bounds.height)
+
+        export_json(.data.alignment)
+
+
 -- Initiate the script
 export_json(vertical)
 
