@@ -58,6 +58,9 @@ format_trailing_comma = (index, max) ->
 
 
 -- Creates a json file containing the strip information
+-- Params:
+--      alignment - Flag if the frames are aligned vertically or horizontally.
+--                  Can be 'vertically' or 'horizontally'
 export_json = (alignment) ->
     path, filename, ext = split_filepath(sprite.filename)
 
@@ -109,6 +112,9 @@ export_json = (alignment) ->
         \close!
 
 
+-- Creates a dialog window to let the user decide the method of aligning the
+-- frames (either vertically or horizontally) and start the script when pressing
+-- the submit button
 dialog = () ->
     with dlg = Dialog('Simple Json')
         \combobox({
@@ -129,6 +135,7 @@ dialog = () ->
         export_json(.data.alignment)
 
 
+-- Initialisation
 init = () ->
     dialog!
 
