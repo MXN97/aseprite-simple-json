@@ -48,8 +48,8 @@ format_trailing_comma = (index, max) ->
     return "\n" if index == max else ",\n"
 
 
--- Initiates the script
-init = ->
+-- Creates a json file containing the strip information
+export_json = (alignment) ->
     path, filename, ext = split_filepath(sprite.filename)
 
     with file = io.open("#{path .. filename}.json", 'w')
@@ -66,7 +66,11 @@ init = ->
 
             while true
                 \write('\t\t{\n')
-                frame_data, number_of_values = get_frame_data(frame, last_x, last_y)
+                frame_data, number_of_values = get_frame_data(
+                    frame, 
+                    last_x, 
+                    last_y
+                )
 
                 index = 1
 
@@ -96,6 +100,6 @@ init = ->
 
 
 -- Initiate the script
-init!
+export_json(vertical)
 
 app.alert('done!') -- for debugging
