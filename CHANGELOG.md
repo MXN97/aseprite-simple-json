@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Parser for meta information in Tags (e.g. width, height)
 - Nice Readme
 
+## 0.1.1 - 2019-07-27
+
+### Added
+- 0.1.0 section in CHANGELOG.md
+
+### Fixed
+- Y-coordinate not correctly calculated
+- Broken links in CHANGELOG.md
+
 ## [0.1.0](https://github.com/MXN97/aseprite-simple-json/releases/tag/v0.1.0) - 2019-07-26
 
 ### Added
