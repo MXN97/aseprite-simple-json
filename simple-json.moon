@@ -120,7 +120,7 @@ dialog = () ->
         \combobox({
             id: 'alignment',
             label: 'Alignment:',
-            options: {vertical, horizontal}
+            options: { vertical, horizontal }
         })
         \newrow!
         \button({ 
@@ -128,7 +128,7 @@ dialog = () ->
             text: 'Create Json',
             onclick: () -> \close!
         })
-        \show!
+        \show({ wait: false })
 
         .bounds = Rectangle(250, 500, .bounds.width, .bounds.height)
 
