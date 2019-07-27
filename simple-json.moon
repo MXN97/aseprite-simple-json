@@ -21,15 +21,15 @@ split_filepath = (path) ->
 -- Returns: a tuple containing a hash table containing the x coordinate, 
 --          y coordinate, width and height AND the number of values (bandaid
 --          solution)
-get_frame_data = (frame, last_x = nil, last_y = nil) ->
+get_frame_data = (frame, last_x = 0, last_y = 0) ->
     local x, y
 
     sprite = frame.sprite
     width = sprite.width
     height = sprite.height
 
-    x = 0 if not last_x else frame.frameNumber * width
-    y = 0 if not last_y
+    x = last_x + (frame.frameNumber - 1) * width
+    y = last_y
 
     {:x, :y, :width, :height}, 4
 
