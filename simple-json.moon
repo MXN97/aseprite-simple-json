@@ -129,7 +129,11 @@ dialog = () ->
         export_json(.data.alignment)
 
 
+init = () ->
+    dialog!
+
+
 -- Initiate the script
-export_json(vertical)
+init!
 
 app.alert('done!') -- for debugging
