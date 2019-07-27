@@ -1,10 +1,4 @@
--- Initial setup and check
-sprite = app.activeSprite
-
-return app.alert('There is no active sprite!') if not sprite
-
-vertical = 'vertical'
-horizontal = 'horizontal'
+local sprite, vertical, horizontal
 
 -- Splits a given full file path into its path, file (without extension) and the
 -- extension (without the preceding .)
@@ -137,6 +131,13 @@ dialog = () ->
 
 -- Initialisation
 init = () ->
+    sprite = app.activeSprite
+
+    return app.alert('There is no active sprite!') if not sprite
+
+    vertical = 'vertical'
+    horizontal = 'horizontal'
+    
     dialog!
 
 
