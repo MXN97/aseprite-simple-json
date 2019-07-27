@@ -142,5 +142,3 @@ init = () ->
 
 -- Initiate the script
 init!
-
-app.alert('done!') -- for debugging
