@@ -19,23 +19,32 @@ split_filepath = (path) ->
 -- Extracts the relevant data from a single frame
 -- Params:
 --      frame - The current Frame
+--      alignment - Flag if the frames are aligned vertically or horizontally.
+--                  Can be 'vertically' or 'horizontally'
 --      last_x - Optional. The x coordinate of the last frame processed
 --      last_y - Optional. The y coordinate of the last frame processed
 -- Returns: a tuple containing a hash table containing the x coordinate, 
 --          y coordinate, width and height AND the number of values (bandaid
 --          solution)
-get_frame_data = (frame, last_x = 0, last_y = 0) ->
+get_frame_data = (frame, alignment, last_x = 0, last_y = 0) ->
     local x, y
 
     sprite = frame.sprite
     width = sprite.width
     height = sprite.height
 
-    x = last_x + (frame.frameNumber - 1) * width
-    y = last_y
+    switch alignment
+        when vertical
+            x = last_x + (frame.frameNumber - 1) * width
+            y = last_y
+        when horizontal
+            x = last_x
+            y = last_y + (frame.frameNumber - 1) * height
+        else
+            error "get_frame_data error: #{alignment}"
 
     {:x, :y, :width, :height}, 4
-
+    
 
 -- Formats the trailing comma for Json lines. It is either omitted when being
 -- the last line/item or appended if not
@@ -68,6 +77,7 @@ export_json = (alignment) ->
                 \write('\t\t{\n')
                 frame_data, number_of_values = get_frame_data(
                     frame, 
+                    alignment, 
                     last_x, 
                     last_y
                 )
